@@ -33,7 +33,10 @@
             "App\\": "laravel-app/app/",
             "Database\\Factories\\": "laravel-app/database/factories/",
             "Database\\Seeders\\": "laravel-app/database/seeders/"
-        }
+        },
+        "files": [
+            "laravel-app/app/Helpers/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

@@ -39,6 +39,7 @@ class ComposerStaticInitea24a8d88377c9cd0962665edfe67ce8
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        '4bce64ca49757efa0a106036925d5c61' => __DIR__ . '/../..' . '/laravel-app/app/Helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -523,7 +524,12 @@ class ComposerStaticInitea24a8d88377c9cd0962665edfe67ce8
         'App\\Exceptions\\HandleExceptions' => __DIR__ . '/..' . '/laravel/pint/app/Exceptions/HandleExceptions.php',
         'App\\Factories\\ConfigurationFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationFactory.php',
         'App\\Factories\\ConfigurationResolverFactory' => __DIR__ . '/..' . '/laravel/pint/app/Factories/ConfigurationResolverFactory.php',
+        'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/laravel-app/app/Http/Controllers/Admin/AdminController.php',
+        'App\\Http\\Controllers\\Admin\\IndexController' => __DIR__ . '/../..' . '/laravel-app/app/Http/Controllers/Admin/IndexController.php',
         'App\\Kernel' => __DIR__ . '/..' . '/laravel/pint/app/Kernel.php',
+        'App\\Models\\Menu' => __DIR__ . '/../..' . '/laravel-app/app/Models/Menu.php',
+        'App\\Models\\Role' => __DIR__ . '/../..' . '/laravel-app/app/Models/Role.php',
+        'App\\Models\\User' => __DIR__ . '/../..' . '/laravel-app/app/Models/User.php',
         'App\\Output\\Concerns\\InteractsWithSymbols' => __DIR__ . '/..' . '/laravel/pint/app/Output/Concerns/InteractsWithSymbols.php',
         'App\\Output\\ProgressOutput' => __DIR__ . '/..' . '/laravel/pint/app/Output/ProgressOutput.php',
         'App\\Output\\SummaryOutput' => __DIR__ . '/..' . '/laravel/pint/app/Output/SummaryOutput.php',
