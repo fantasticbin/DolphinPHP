@@ -122,10 +122,16 @@ if (!function_exists('role_auth')) {
     function role_auth()
     {
         // Implementation would set current user's role permissions
-        // This is a placeholder
         $user = auth()->user();
-        if ($user && $user->role) {
-            session(['user_auth.role' => $user->role->id]);
+        if ($user) {
+            // Load role relationship if not already loaded
+            if (!$user->relationLoaded('role')) {
+                $user->load('role');
+            }
+            
+            if ($user->role) {
+                session(['user_auth.role' => $user->role->id]);
+            }
         }
     }
 }

@@ -108,16 +108,23 @@ class Menu extends Model
      * Get menu tree structure
      * 
      * @param int $pid Parent ID
+     * @param array $loaded Track loaded IDs to prevent cycles
      * @return \Illuminate\Support\Collection
      */
-    public static function getTree($pid = 0)
+    public static function getTree($pid = 0, array &$loaded = [])
     {
+        if (in_array($pid, $loaded)) {
+            return collect([]);
+        }
+        
+        $loaded[] = $pid;
+        
         return static::where('pid', $pid)
             ->active()
             ->ordered()
             ->get()
-            ->map(function ($menu) {
-                $menu->children = static::getTree($menu->id);
+            ->map(function ($menu) use (&$loaded) {
+                $menu->children = static::getTree($menu->id, $loaded);
                 return $menu;
             });
     }
@@ -126,14 +133,21 @@ class Menu extends Model
      * Get all child IDs recursively
      * 
      * @param int $pid Parent ID
+     * @param int $maxDepth Maximum recursion depth
+     * @param array $loaded Track loaded IDs to prevent cycles
      * @return array
      */
-    public static function getChildIds($pid)
+    public static function getChildIds($pid, $maxDepth = 10, array &$loaded = [])
     {
+        if ($maxDepth <= 0 || in_array($pid, $loaded)) {
+            return [];
+        }
+        
+        $loaded[] = $pid;
         $ids = static::where('pid', $pid)->pluck('id')->toArray();
         
         foreach ($ids as $id) {
-            $ids = array_merge($ids, static::getChildIds($id));
+            $ids = array_merge($ids, static::getChildIds($id, $maxDepth - 1, $loaded));
         }
         
         return $ids;
