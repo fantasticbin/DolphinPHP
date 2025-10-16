@@ -6,3 +6,11 @@ composer.lock
 /.buildpath
 /.project
 *.log
+/vendor/
+/node_modules/
+laravel-app/.env
+laravel-app/storage/*.key
+laravel-app/storage/framework/
+laravel-app/storage/logs/
+laravel-app/bootstrap/cache/*
+!laravel-app/bootstrap/cache/.gitignore
