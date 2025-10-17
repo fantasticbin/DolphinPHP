@@ -1,37 +1,68 @@
 {
-    "name": "topthink/think",
-    "description": "the new thinkphp framework",
+    "name": "dolphinphp/dolphinphp",
+    "description": "DolphinPHP - A fast development framework powered by Laravel",
     "type": "project",
     "keywords": [
         "framework",
-        "thinkphp",
-        "ORM"
+        "laravel",
+        "dolphinphp"
     ],
-    "homepage": "http://thinkphp.cn/",
+    "homepage": "http://www.dolphinphp.com",
     "license": "Apache-2.0",
     "authors": [
         {
-            "name": "liu21st",
-            "email": "liu21st@gmail.com"
+            "name": "DolphinPHP Team",
+            "email": "admin@dolphinphp.com"
         }
     ],
     "require": {
-        "php": ">=5.6.0",
-        "topthink/framework": "5.1.*",
-        "topthink/think-captcha": "^2.0",
-        "topthink/think-image": "^1.0",
-        "topthink/think-helper": "^1.0",
+        "php": "^8.2",
+        "laravel/framework": "^11.0",
         "ezyang/htmlpurifier": "^4.9"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.23",
+        "laravel/pint": "^1.13",
+        "laravel/sail": "^1.26",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.0",
+        "phpunit/phpunit": "^11.0"
     },
     "autoload": {
         "psr-4": {
-            "app\\": "application"
+            "App\\": "laravel-app/app/",
+            "Database\\Factories\\": "laravel-app/database/factories/",
+            "Database\\Seeders\\": "laravel-app/database/seeders/"
+        },
+        "files": [
+            "laravel-app/app/Helpers/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "laravel-app/tests/"
         }
     },
+    "scripts": {
+        "post-autoload-dump": [],
+        "post-update-cmd": [],
+        "post-root-package-install": [],
+        "post-create-project-cmd": []
+    },
     "extra": {
-        "think-path": "thinkphp"
+        "laravel": {
+            "dont-discover": []
+        }
     },
     "config": {
-        "preferred-install": "dist"
-    }
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
