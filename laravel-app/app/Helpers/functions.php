@@ -76,10 +76,13 @@ if (!function_exists('action_log')) {
      */
     function action_log($action, $model, $recordId, $userId, $remark = '')
     {
-        // Implementation would go here
-        // This is a placeholder for the actual logging functionality
-        \Illuminate\Support\Facades\Log::info("Action: {$action}, Model: {$model}, Record: {$recordId}, User: {$userId}, Remark: {$remark}");
-        return true;
+        try {
+            \App\Models\Log::createLog($action, $model, $recordId, $userId, $remark);
+            return true;
+        } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error("Action log error: {$e->getMessage()}");
+            return false;
+        }
     }
 }
 
