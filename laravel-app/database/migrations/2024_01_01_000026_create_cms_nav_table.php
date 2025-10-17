@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('cms_nav', function (Blueprint $table) {
+            $table->id();
+            $table->string('title')->comment('Navigation title');
+            $table->string('url')->comment('URL');
+            $table->string('target', 20)->default('_self')->comment('Link target');
+            $table->string('icon', 100)->nullable()->comment('Icon');
+            $table->integer('sort')->default(100)->comment('Sort order');
+            $table->tinyInteger('status')->default(1)->comment('Status');
+            $table->timestamps();
+
+            $table->index('status');
+            $table->index('sort');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('cms_nav');
+    }
+};
