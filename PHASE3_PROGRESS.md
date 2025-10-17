@@ -5,7 +5,7 @@ Phase 3 focuses on migrating models from ThinkPHP to Laravel Eloquent ORM and cr
 
 ## Completed Items ✅
 
-### Models Migrated (11 Total)
+### Models Migrated (21 Total - 72% Complete)
 
 #### From Phase 2 (6 models):
 1. **User** - User authentication with role relationships
@@ -15,39 +15,28 @@ Phase 3 focuses on migrating models from ThinkPHP to Laravel Eloquent ORM and cr
 5. **Log** - Action log records with relationships
 6. **Config** - System configuration with caching
 
-#### From Phase 3 (5 new models):
+#### From Phase 3 - Batch 1 (5 models):
 7. **Attachment** - File upload and attachment management
-   - Multiple storage driver support (local, remote)
-   - Image dimension tracking
-   - MD5/SHA1 hash tracking
-   - File metadata management
-   - User association
-
 8. **Message** - Internal messaging system
-   - User-to-user messaging
-   - Read/unread status tracking
-   - Message type classification
-   - Sender/receiver relationships
-
 9. **Hook** - System hooks for plugin integration
-   - Hook registration and management
-   - System vs custom hooks distinction
-   - Plugin association
-   - Batch hook operations
-
 10. **HookPlugin** - Links plugins to hooks
-    - Many-to-many relationship
-    - Sort order management
-    - Status tracking
-
 11. **Plugin** - Plugin management system
-    - Plugin metadata storage
-    - Configuration management (JSON)
-    - Version tracking
-    - Admin-only plugins support
-    - Bootstrap plugin support
 
-### Database Migrations (11 Total)
+#### From Phase 3 - Batch 2 (5 models):
+12. **Access** - User authorization nodes
+13. **Icon** - Icon library management
+14. **IconList** - Individual icons in libraries
+15. **Module** - Module management system
+16. **Packet** - Data packet management
+
+#### From Phase 3 - Batch 3 (5 models):
+17. **Column** - Content columns/categories (CMS)
+18. **Page** - Single pages (CMS)
+19. **Link** - Friendly links
+20. **Advert** - Advertisements
+21. **AdvertType** - Advertisement types/positions
+
+### Database Migrations (21 Total)
 
 #### From Phase 2 (6 migrations):
 - `create_admin_user_table` - User accounts
