@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 use App\Http\Controllers\Admin\MenuController as AdminMenuController;
 use App\Http\Controllers\Admin\ConfigController as AdminConfigController;
+use App\Http\Controllers\Admin\AttachmentController;
+use App\Http\Controllers\Admin\IconController;
+use App\Http\Controllers\Admin\AjaxController;
 use App\Http\Controllers\Auth\LoginController;
 
 // Welcome page
@@ -52,5 +55,33 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
         Route::delete('/{id}', [AdminConfigController::class, 'destroy'])->name('destroy');
         Route::post('/quick-edit', [AdminConfigController::class, 'quickEdit'])->name('quick-edit');
         Route::post('/status', [AdminConfigController::class, 'status'])->name('status');
+    });
+    
+    // Attachment Management
+    Route::prefix('attachment')->name('attachment.')->group(function () {
+        Route::get('/', [AttachmentController::class, 'index'])->name('index');
+        Route::post('/upload', [AttachmentController::class, 'upload'])->name('upload');
+        Route::get('/{id}', [AttachmentController::class, 'show'])->name('show');
+        Route::delete('/{id}', [AttachmentController::class, 'destroy'])->name('destroy');
+    });
+    
+    // Icon Library Management
+    Route::prefix('icon')->name('icon.')->group(function () {
+        Route::get('/', [IconController::class, 'index'])->name('index');
+        Route::post('/', [IconController::class, 'store'])->name('store');
+        Route::put('/{id}', [IconController::class, 'update'])->name('update');
+        Route::delete('/{id}', [IconController::class, 'destroy'])->name('destroy');
+        Route::get('/{id}/items', [IconController::class, 'items'])->name('items');
+        Route::post('/{id}/reload', [IconController::class, 'reload'])->name('reload');
+        Route::post('/status', [IconController::class, 'status'])->name('status');
+    });
+    
+    // Ajax Utilities
+    Route::prefix('ajax')->name('ajax.')->group(function () {
+        Route::get('/get-level-data', [AjaxController::class, 'getLevelData'])->name('get-level-data');
+        Route::get('/get-table', [AjaxController::class, 'getTable'])->name('get-table');
+        Route::get('/get-table-info', [AjaxController::class, 'getTableInfo'])->name('get-table-info');
+        Route::get('/get-menu-tree', [AjaxController::class, 'getMenuTree'])->name('get-menu-tree');
+        Route::post('/clear-cache', [AjaxController::class, 'clearCache'])->name('clear-cache');
     });
 });
